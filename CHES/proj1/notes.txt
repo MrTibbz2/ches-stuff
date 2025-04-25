@@ -1,0 +1,23 @@
+DELIVERY SERVICE MANAGER
+
+gonna be for delivering coffee beans because.. yum
+
+feature plan:
+- add time, date, deliveryperson, address, orderitems (list), order total: to a queue of deliveries to be done
+- add a menu integration to control orders from users and add totals based on orders, assign deliveryperson to orders based on time
+- add sql to make things consistent through runs of the program 
+- maybe a ui?
+
+roadmap:
+1. data movement class, basic cli
+2. menu to calculate order totals
+3. sql databases
+
+main queue functions needed:
+- Append: add items to the end of the delivery queue to be delivered later on, queued up to be delivered
+- pop: remove the delivery after it has been delivered
+- peek: view the upcoming delivery
+- size(): view the number of deliveries pending
+- clear(): error handeling and system reset
+- peek_last(): show the latest placed delivery
+- is_empty(): error handling
