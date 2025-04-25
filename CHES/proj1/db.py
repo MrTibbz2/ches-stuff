@@ -17,7 +17,7 @@ class dbapi:
         self.db = db
     
     def saveDB(self, qManage): # passing in the queue api so that main and db interact with the same queue.
-        self.db.truncate()
+        self.db.truncate() # caveman technique for making sure no duplicates exist.
         q = qManage.getAll().queue
         for DeliveryOrder in q:
             
