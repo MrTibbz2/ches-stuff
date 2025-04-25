@@ -31,7 +31,7 @@ class menuSelection:
         self.queue.removeLatest()
         print("Latest order removed successfully!")
 
-    def remove_by_id(self):
+
         uid = int(input("Enter the order ID to remove: "))
         self.queue.removeById(uid)
         print(f"Order with ID {uid} removed successfully!")
@@ -67,11 +67,11 @@ def CLIMain():
             print("\nPlease select an option:")
             print("1. Add order")
             print("2. Remove latest order")
-            print("3. Remove order by ID")
-            print("4. View all orders")
-            print("5. Clear all orders")
-            print("6. View latest order")
-            print("7. Exit")
+        
+            print("3. View all orders")
+            print("4. Clear all orders")
+            print("5. View latest order")
+            print("6. Exit")
             choice = int(input("\nEnter your choice: "))
         except ValueError:
             print("Invalid input. Please enter a number.")
@@ -81,15 +81,14 @@ def CLIMain():
             menu.add_order()
         elif choice == 2:
             menu.remove_latest()
+
         elif choice == 3:
-            menu.remove_by_id()
-        elif choice == 4:
             menu.view_all_orders()
-        elif choice == 5:
+        elif choice == 4:
             menu.clear_all_orders()
-        elif choice == 6:
+        elif choice == 5:
             menu.view_latest_order()
-        elif choice == 7:
+        elif choice == 6:
             print("saving database...")
             DBApi.saveDB(q)
             print("Exiting the system. Goodbye!")

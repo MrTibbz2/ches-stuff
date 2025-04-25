@@ -14,8 +14,8 @@ roadmap:
 3. menu to calculate order totals
 
 main queue functions needed:
-- Append: add items to the end of the delivery queue to be delivered later on, queued up to be delivered
-- pop: remove the delivery after it has been delivered
+- enqueue: add items to the end of the delivery queue to be delivered later on, queued up to be delivered
+- dequeue: remove the delivery after it has been delivered
 - peek: view the upcoming delivery
 - size(): view the number of deliveries pending
 - clear(): error handeling and system reset

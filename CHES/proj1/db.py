@@ -6,11 +6,14 @@ from tinydb import TinyDB
 import dataclasses
 from data import DeliveryOrder
 from datetime import datetime
+import os
 
 
 class dbapi:
     def __init__(self):
-        db = TinyDB('db/db.json')  # Corrected TinyDB initialization
+        
+        os.makedirs('db', exist_ok=True)
+        db = TinyDB('db/db.json')  
         self.db = db
     
     def saveDB(self, qManage): # passing in the queue api so that main and db interact with the same queue.
@@ -24,7 +27,7 @@ class dbapi:
                 'address': DeliveryOrder.address,
                 'order': DeliveryOrder.order,
                 'total': DeliveryOrder.total,
-                'datetimePlaced': DeliveryOrder.datetimePlaced  
+                'datetimePlaced': DeliveryOrder.datetimePlaced.isoformat()  
             })
         print("saved db")
     
