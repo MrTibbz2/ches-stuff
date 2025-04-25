@@ -1,7 +1,10 @@
 from data import DeliveryOrder, queueManagement
 from datetime import datetime
 import asyncio
+from db import dbapi
+DBApi = dbapi()
 
+q = queueManagement()
 class menuSelection:
     def __init__(self, queue: queueManagement):
         self.queue = queue
@@ -53,7 +56,7 @@ class menuSelection:
             print("No orders in the queue.")
 
 def CLIMain():
-    q = queueManagement()
+
     menu = menuSelection(q)
 
     
@@ -87,10 +90,15 @@ def CLIMain():
         elif choice == 6:
             menu.view_latest_order()
         elif choice == 7:
+            print("saving database...")
+            DBApi.saveDB(q)
             print("Exiting the system. Goodbye!")
             break
         else:
             print("Invalid choice. Please try again.")
 
+
+
+DBApi.loadDB(q)
 
 CLIMain()

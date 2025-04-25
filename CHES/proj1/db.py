@@ -26,6 +26,7 @@ class dbapi:
                 'total': DeliveryOrder.total,
                 'datetimePlaced': DeliveryOrder.datetimePlaced  
             })
+        print("saved db")
     
     def loadDB(self, qManage):
         all_documents = self.db.all()  
@@ -41,6 +42,7 @@ class dbapi:
                 datetimePlaced=datetime.fromisoformat(document['datetimePlaced'])
             )
             qManage.addOrder(order)  
+        print("loaded db")
 
 
 
