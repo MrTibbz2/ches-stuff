@@ -17,6 +17,7 @@ class dbapi:
         self.db = db
     
     def saveDB(self, qManage): # passing in the queue api so that main and db interact with the same queue.
+        self.db.truncate()
         q = qManage.getAll().queue
         for DeliveryOrder in q:
             
@@ -32,6 +33,7 @@ class dbapi:
         print("saved db")
     
     def loadDB(self, qManage):
+        
         all_documents = self.db.all()  
         for document in all_documents:
             
