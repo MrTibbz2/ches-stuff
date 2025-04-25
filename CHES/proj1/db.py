@@ -17,7 +17,7 @@ class dbapi:
         self.db = db
     
     def saveDB(self, qManage): # passing in the queue api so that main and db interact with the same queue.
-        q = qManage.getAll()
+        q = qManage.getAll().queue
         for DeliveryOrder in q:
             
             self.db.insert({

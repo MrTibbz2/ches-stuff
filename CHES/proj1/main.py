@@ -37,7 +37,7 @@ class menuSelection:
         print(f"Order with ID {uid} removed successfully!")
 
     def view_all_orders(self):
-        orders = self.queue.getAll()
+        orders = self.queue.getAll().queue
         if not orders:
             print("No orders in the queue.")
         else:
