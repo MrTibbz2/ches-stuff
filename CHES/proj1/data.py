@@ -4,7 +4,7 @@ from typing import List, Tuple
 import asyncio
 @dataclass
 class DeliveryOrder: #class to track different parts of a user's order. I just prefer the struct like data classes because I come from c++
-    uid: int # just wanna track what the id is so I can link it into a database later maybe
+    uid: int # just wanna track what the id is so I can link it into a database later. also helps for tracking things
     firstname: str
     lastname: str
     address: str

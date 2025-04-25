@@ -1,0 +1,5 @@
+tinydb
+dataclasses
+datetime
+typing
+asyncio # was used in earlier implementations not so much now because its a hassle
