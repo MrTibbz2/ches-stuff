@@ -32,9 +32,7 @@ class menuSelection:
         print("Latest order removed successfully!")
 
 
-        uid = int(input("Enter the order ID to remove: "))
-        self.queue.removeById(uid)
-        print(f"Order with ID {uid} removed successfully!")
+       
 
     def view_all_orders(self):
         orders = self.queue.getAll().queue
