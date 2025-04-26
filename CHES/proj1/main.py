@@ -2,6 +2,7 @@ from data import DeliveryOrder, queueManagement
 from datetime import datetime
 import asyncio
 from db import dbapi
+from menu import menuItem, menu
 DBApi = dbapi()
 
 q = queueManagement()
@@ -10,22 +11,32 @@ class menuSelection:
         self.queue = queue
 
     def add_order(self):
+        m = menu()
         uid = self.queue.findlatestID() + 1
         firstname = input("Enter first name: ")
         lastname = input("Enter last name: ")
         address = input("Enter address: ")
         order_items = []
         while True:
-            item_name = input("Enter item name (or 'done' to finish): ")
-            if item_name.lower() == 'done':
+            menuitems = m.showmenu()
+            print("choose from the following menu for the order:")
+            for menuItem in menuitems:
+                print(str(f"    name: {menuItem.blendName}, ID: {menuItem.blendID}, roast: {menuItem.blendRoast}, price: {menuItem.blendPrice}"))
+                
+            itemID = input("Enter item ID (or 'done' to finish): ")
+            
+            if itemID.lower() == 'done':
                 break
-            quantity = int(input(f"Enter quantity for {item_name}: "))
-            order_items.append((item_name, quantity))
-        total = float(input("Enter total price: "))
-        datetime_placed = datetime.now()
-        order = DeliveryOrder(uid, firstname, lastname, address, order_items, total, datetime_placed)
-        self.queue.addOrder(order)
-        print("Order added successfully!")
+            quantity = int(input(f"Enter quantity for item with id of {itemID}: "))
+            order_items.append((itemID, quantity))
+        total = m.calculateTotal(order_items)
+        print(f"your total order price is: {total}")
+        checkconfirm = int(input("type 1 to confirm your order"))
+        if checkconfirm == 1:
+            datetime_placed = datetime.now()
+            order = DeliveryOrder(uid, firstname, lastname, address, order_items, total, datetime_placed)
+            self.queue.addOrder(order)
+            print("Order added successfully!")
 
     def remove_latest(self):
         self.queue.removeLatest()
@@ -53,6 +64,7 @@ class menuSelection:
         else:
             print("No orders in the queue.")
 
+    
 def CLIMain():
 
     menu = menuSelection(q)

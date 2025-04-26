@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 @dataclass
 class menuItem:
-    BlendName: str
+    blendName: str
     blendRoast: str
     blendID: int
     blendPrice: float
