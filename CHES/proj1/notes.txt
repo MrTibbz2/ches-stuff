@@ -17,6 +17,12 @@ main queue functions needed:
 - enqueue: add items to the end of the delivery queue to be delivered later on, queued up to be delivered
 - dequeue: remove the delivery after it has been delivered
 - peek: view the upcoming delivery
+
+note on peek, after actually trying it I realised it doesnt really exist.. 
+you can do the same with queue.queue[0] BUT thats not thread safe
+If multiple threads run at the same time, the code/data will break, crash, or get messed up.
+however I'm not planning to implement multithreading
+
 - size(): view the number of deliveries pending
 - clear(): error handeling and system reset
 - peek_last(): show the latest placed delivery

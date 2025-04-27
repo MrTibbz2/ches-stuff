@@ -15,7 +15,7 @@ class DeliveryOrder: #class to track different parts of a user's order. I just p
 
 class queueManagement:
     def __init__(self):
-        self.queue = Queue()  # Use Queue instead of a list
+        self.queue = Queue()  # Use Queue 
     
     def addOrder(self, order: DeliveryOrder): # add 
         self.queue.put(order)
@@ -24,7 +24,7 @@ class queueManagement:
 
     def removeLatest(self):
         if not self.queue.empty(): 
-            self.queue.get()  # Remove the first order in the queue 
+            self.queue.get()  # Remove the order least recently added to the queue
             print("Removed first order in queue")
     
     def getAll(self): # get all orders in the queue
@@ -42,10 +42,10 @@ class queueManagement:
         return self.queue.qsize()
     
     def getLatest(self):
-        return self.queue.peek(0)
+        return self.queue.queue[0] if not self.queue.empty() else "none in queue"  # Get the first order in the queue without removing it
     
     def findlatestID(self):
         if self.isEmpty():
             return 0
         else:
-            return self.queue.peek(0).uid + 1
+            return self.queue.queue[0].uid 
