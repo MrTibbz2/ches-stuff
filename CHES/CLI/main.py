@@ -28,19 +28,19 @@ class menuSelection:
             for menuItem in menuitems:
                 print(str(f"    name: {menuItem.blendName}, ID: {menuItem.blendID}, roast: {menuItem.blendRoast}, price: {menuItem.blendPrice}"))
                 
-            itemID = int(input("Enter item ID (or 'done' to finish): "))
+            itemID = input("Enter item ID (or 'done'(lowercase) to finish): ")
             
-            if itemID.lower() == 'done':
+            if itemID == 'done':
                 break
             quantity = int(input(f"Enter quantity for item with id of {itemID}: "))
-            if itemID < 0 or itemID >= len(menuitems):
+            if int(itemID) < 0 or int(itemID) >= len(menuitems):
                 print("Invalid item ID. Please try again.")
                 continue
-            order_items.append((itemID, quantity))
+            order_items.append((int(itemID), int(quantity)))
         total = m.calculateTotal(order_items)
         print(f"your total order price is: {total}")
-        checkconfirm = int(input("type 1 to confirm your order: "))
-        if checkconfirm == 1:
+        checkconfirm = input("type 1 to confirm your order: ")
+        if checkconfirm == '1':
             datetime_placed = datetime.now()
             order = DeliveryOrder(uid, firstname, lastname, address, order_items, total, datetime_placed)
             self.queue.addOrder(order)
