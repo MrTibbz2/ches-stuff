@@ -8,7 +8,7 @@ gonna be for delivering coffee beans because.. yum!
 
 - add time, date, deliveryperson, address, orderitems (list), order total: to a queue of deliveries to be done  
 - add a menu integration to control orders from users and add totals based on orders, assign deliveryperson to orders based on time  
-- add sql to make things consistent through runs of the program  
+- add a database to make things consistent through runs of the program  
 
 ---
 
