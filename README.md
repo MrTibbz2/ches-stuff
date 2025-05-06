@@ -1,7 +1,7 @@
 # DELIVERY SERVICE MANAGER
 
 gonna be for delivering coffee beans because.. yum!
-
+> this is a school project and as such the code is not great. it does the job though.
 ---
 
 ## 📋 Feature Plan
